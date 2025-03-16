@@ -11,15 +11,22 @@ const Hero = () => {
         backgroundColor: theme.palette.primary.main,
         height: "100vh",
         display: "flex",
-        alignItems: "center"
+        alignItems: "center",
 
+        [theme.breakpoints.up('xs')]: { // <= mobile
+            
+            paddingTop: "100px"
+        },
+
+        [theme.breakpoints.up('md')]: { // >= mobile
+            
+            paddingTop: "0px"
+        }
     }))
-
-    const StyledImg = styled("img")(() => ({
+    const StyledImg = styled("img")(({ theme }) => ({
         width: "80%",
         borderRadius: "50%",
         border: '1px solid ${theme.palette.primary.main}'
-
     }))
 
     return (
@@ -31,7 +38,7 @@ const Hero = () => {
                             <Box position="relative">
                                 <Box position="absolute" width={"150%"} top={"-100%"} right={"0"}>
                                     <AnimatedBackground />
-                                </Box>                                
+                                </Box>
                                 <Box position="relative" textAlign={"center"}>
                                     <StyledImg src={Avatar} />
                                 </Box>
